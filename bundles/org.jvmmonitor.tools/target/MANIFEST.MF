@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.jvmmonitor.tools;singleton:=true
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.jvmmonitor
+ .core,org.eclipse.jdt.launching
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,JavaSE-1.8
+Eclipse-BuddyPolicy: app
+Bundle-Vendor: %providerName
+Export-Package: org.jvmmonitor.internal.tools;x-friends:="org.jvmmonit
+ or.tools.tests",org.jvmmonitor.tools;x-friends:="org.jvmmonitor.tools
+ .tests"
+Bundle-Name: %pluginName
+Bundle-Version: 3.8.1.201701111445
+Bundle-Localization: plugin
+Bundle-Activator: org.jvmmonitor.tools.Activator
+
