@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='org.jvmmonitor.tools' version='3.8.1.201701111517'>
-    <update id='org.jvmmonitor.tools' range='[0.0.0,3.8.1.201701111517)' severity='0'/>
+  <unit id='org.jvmmonitor.tools' version='3.8.1.201701111625'>
+    <update id='org.jvmmonitor.tools' range='[0.0.0,3.8.1.201701111625)' severity='0'/>
     <properties size='8'>
       <property name='df_LT.pluginName' value='JVM Monitor Tools'/>
       <property name='df_LT.providerName' value='JvmMonitor.org'/>
@@ -13,8 +13,8 @@
       <property name='maven-version' value='3.8.1-SNAPSHOT'/>
     </properties>
     <provides size='6'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.jvmmonitor.tools' version='3.8.1.201701111517'/>
-      <provided namespace='osgi.bundle' name='org.jvmmonitor.tools' version='3.8.1.201701111517'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.jvmmonitor.tools' version='3.8.1.201701111625'/>
+      <provided namespace='osgi.bundle' name='org.jvmmonitor.tools' version='3.8.1.201701111625'/>
       <provided namespace='java.package' name='org.jvmmonitor.internal.tools' version='0.0.0'/>
       <provided namespace='java.package' name='org.jvmmonitor.tools' version='0.0.0'/>
       <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
@@ -27,13 +27,13 @@
       <required namespace='osgi.bundle' name='org.eclipse.jdt.launching' range='0.0.0'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='org.jvmmonitor.tools' version='3.8.1.201701111517'/>
+      <artifact classifier='osgi.bundle' id='org.jvmmonitor.tools' version='3.8.1.201701111625'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: org.jvmmonitor.tools;singleton:=true&#xA;Bundle-Version: 3.8.1.201701111517&#xA;
+          Bundle-SymbolicName: org.jvmmonitor.tools;singleton:=true&#xA;Bundle-Version: 3.8.1.201701111625&#xA;
         </instruction>
       </instructions>
     </touchpointData>
