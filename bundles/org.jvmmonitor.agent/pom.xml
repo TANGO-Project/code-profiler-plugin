@@ -122,9 +122,9 @@
   <packaging>eclipse-plugin</packaging>
   <dependencies>
   	<dependency>
-        <groupId>com.github.Tango-Project</groupId>
-        <artifactId>energy-modeller</artifactId>
-    	<version>-SNAPSHOT</version>
+      <groupId>com.github.Tango-Project</groupId>
+      <artifactId>energy-modeller</artifactId>
+      <version>7f021c8c2b</version>
 	</dependency>
   </dependencies>
 </project>
