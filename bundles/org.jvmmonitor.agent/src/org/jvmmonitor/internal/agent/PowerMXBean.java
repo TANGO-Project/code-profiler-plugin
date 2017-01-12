@@ -3,7 +3,7 @@ package org.jvmmonitor.internal.agent;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.ascetic.asceticarchitecture.iaas.energymodeller.types.energyuser.usage.HostEnergyCalibrationData;
+import eu.tango.energymodeller.types.energyuser.usage.HostEnergyCalibrationData;
 
 public interface PowerMXBean {
 
