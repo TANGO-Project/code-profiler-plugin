@@ -60,6 +60,9 @@
 								<include>*.jar</include>
 								<include>org.*-lib/</include>
 							</includes>
+              <excludes>
+                <exclude>energy-modeller*.jar</exclude>
+              </excludes>							
 							<followSymlinks>false</followSymlinks>
 						</fileset>
 					</filesets>
