@@ -67,11 +67,11 @@
 			</plugin>      
     </plugins>
   </build>
-	<dependencies>
-        <dependency>
-            <groupId>com.github.Tango-Project</groupId>
-            <artifactId>energy-modeller</artifactId>
-            <version>-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>com.github.Tango-Project</groupId>
+      <artifactId>energy-modeller</artifactId>
+      <version>7f021c8c2b</version>
+    </dependency>
+  </dependencies>
 </project>

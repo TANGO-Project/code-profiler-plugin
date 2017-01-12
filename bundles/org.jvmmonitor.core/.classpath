@@ -61,7 +61,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-dbcp-7.0.37.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/velocity-1.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="/energy-modeller/target/energy-modeller-1.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/io-utils/target/io-utils-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/energy-modeller-7f021c8c2b.jar"/>
+	<classpathentry kind="lib" path="lib/io-utils--V1.0-g3a37cb4-1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
