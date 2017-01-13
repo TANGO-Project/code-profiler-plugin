@@ -11,4 +11,4 @@ language: java
 jdk:
   - oraclejdk8
   
-script: mvn install -DskipTest
+script: mvn install -DskipTest -q
