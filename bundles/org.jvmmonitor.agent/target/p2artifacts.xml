@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.jvmmonitor.agent' version='3.8.1.201701111517'>
+  <artifact classifier='osgi.bundle' id='org.jvmmonitor.agent' version='3.8.1.201701121657'>
     <properties size='5'>
-      <property name='artifact.size' value='43110740'/>
-      <property name='download.size' value='43110740'/>
+      <property name='artifact.size' value='43295639'/>
+      <property name='download.size' value='43295639'/>
       <property name='maven-groupId' value='org.jvmmonitor'/>
       <property name='maven-artifactId' value='org.jvmmonitor.agent'/>
       <property name='maven-version' value='3.8.1-SNAPSHOT'/>
