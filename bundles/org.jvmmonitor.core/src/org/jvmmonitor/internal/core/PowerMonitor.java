@@ -171,9 +171,9 @@ public class PowerMonitor implements IPowerMonitor {
             }
         }
 
-        double power = predictor.predictPowerUsed(host, cpuUsage / 100) - host.getIdlePowerConsumption();
-        if (power > 0)
-        System.out.println("PowMon: Usage: " + cpuUsage + " Power: " + power);
+        double power = predictor.predictPowerUsed(host, cpuUsage) - host.getIdlePowerConsumption();
+        //if (power > 0)
+        //System.out.println("PowMon: Usage: " + cpuUsage + " Power: " + power);
         /**
          * Checking the power usage value is correct, this may not be the case
          * if cpu utilisation value gets reported incorrectly
