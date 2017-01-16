@@ -8,6 +8,7 @@ package org.jvmmonitor.internal.core.cpu;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.jvmmonitor.core.cpu.ICallTreeNode;
 import org.jvmmonitor.core.cpu.ICpuModel;
@@ -153,7 +154,7 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
         if (selfTime == 0 || totalEnergy == 0) {
             return 0;
         }   
-        return totalEnergy / ((double)selfTime);
+        return totalEnergy / ((double)TimeUnit.MILLISECONDS.toSeconds(selfTime));
     }
 
     /*
@@ -172,7 +173,7 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
         if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0) {
             return 0;
         }           
-        return (totalEnergy / totalTime) * selfTime;
+        return (totalEnergy / TimeUnit.MILLISECONDS.toSeconds(totalTime)) * TimeUnit.MILLISECONDS.toSeconds(selfTime);
     }    
     
     @Override

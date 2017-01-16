@@ -1470,11 +1470,11 @@ public class MBeanServer implements IMBeanServer {
 
             hotSpotThreadNode
                     .setTotalTime(hotSpotThreadNode.getTotalTime() + period);
-            hotSpotThreadNode.incrementTotalEnergy((period * power));
+            hotSpotThreadNode.incrementTotalEnergy(power * (period / 1000d));
             if (isRootStack) {
                 callTreeThreadNode.setTotalTime(
                         callTreeThreadNode.getTotalTime() + period);
-                callTreeThreadNode.incrementTotalEnergy(power * period);
+                callTreeThreadNode.incrementTotalEnergy(power * (period/1000d));
             }
 
             isRootStack = false;
@@ -1528,7 +1528,7 @@ public class MBeanServer implements IMBeanServer {
                         .setInvocationCount(frameNode.getInvocationCount() + 1);
             }
             frameNode.setTotalTime(frameNode.getTotalTime() + period);
-            frameNode.setTotalEnergy(frameNode.getTotalEnergy() + (power * period));
+            frameNode.setTotalEnergy(frameNode.getTotalEnergy() + (power * (period / 1000d)));
         }
 
         if (isLeaf) {

@@ -8,6 +8,7 @@ package org.jvmmonitor.internal.core.cpu;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
 
 import org.jvmmonitor.core.cpu.IMethodNode;
 import org.jvmmonitor.core.cpu.IThreadNode;
@@ -102,7 +103,7 @@ public class ThreadNode<E extends IMethodNode> implements IThreadNode {
      */
     @Override
     public double getAveragePower() {
-        return totalEnergy / totalTime; //TODO check units here
+        return totalEnergy / TimeUnit.MILLISECONDS.toSeconds(totalTime);
     }    
     
     /*

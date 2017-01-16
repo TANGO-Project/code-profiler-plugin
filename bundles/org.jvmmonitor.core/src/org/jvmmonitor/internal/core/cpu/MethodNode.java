@@ -119,12 +119,12 @@ public class MethodNode extends AbstractMethodNode {
     }
     
     /**
-     * 
-     * @param power
-     * @param duration
+     * Updates the method nodes energy and power values.
+     * @param power The power in Watts
+     * @param duration The time in milliseconds
      */
     public void incrementAveragePower(double power, long duration) {
-        totalEnergy = totalEnergy + (power * duration);
+        totalEnergy = totalEnergy + (power * (duration/ 1000));
     }   
     
     /**
