@@ -246,8 +246,8 @@ public class HotSpotsLabelProvider extends AbstractLabelProvider {
         if (cpuModel == null) {
             return ""; //$NON-NLS-1$
         }
-        if (element instanceof IThreadNode) {
-            return String.format("%.2f", ((IThreadNode) element).getTotalEnergy());//$NON-NLS-1$
+        if (element instanceof IThreadNode) { //TODO Remove this bug fix
+            return String.format("%.2f", ((IThreadNode) element).getTotalEnergy() / 2);//$NON-NLS-1$
         }
         if (element instanceof ICallTreeNode) {
             return String.format("%.2f", ((ICallTreeNode) element).getSelfTotalEnergy());

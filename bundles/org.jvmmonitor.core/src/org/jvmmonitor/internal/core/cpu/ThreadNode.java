@@ -176,7 +176,9 @@ public class ThreadNode<E extends IMethodNode> implements IThreadNode {
      *            The total invocation time
      */
     public void setTotalTime(long time) {
-        totalTime = time;
+        if (time >=0) {
+            totalTime = time;
+        }
     }
 
     /**
@@ -186,7 +188,9 @@ public class ThreadNode<E extends IMethodNode> implements IThreadNode {
      *            The energy consumption to add to the overall total
      */
     public void incrementTotalEnergy(double energy) {
-        totalEnergy = totalEnergy + energy;
+        if (energy > 0 && Double.isFinite(energy)) {
+            totalEnergy = totalEnergy + energy;
+        }
     }       
     
     /**
@@ -196,6 +200,8 @@ public class ThreadNode<E extends IMethodNode> implements IThreadNode {
      *            The total energy consumed over time
      */
     public void setTotalEnergy(double energy) {
-        totalEnergy = energy;
+        if (energy >= 0 && Double.isFinite(energy)) {
+            totalEnergy = energy;
+        }
     }    
 }

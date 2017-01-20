@@ -125,14 +125,18 @@ public class MethodNode extends AbstractMethodNode {
      * @param duration The time in milliseconds
      */
     public void incrementAveragePower(double power, long duration) {
-        totalEnergy = totalEnergy + (power * (duration/ 1000d));
+        if (power > 0 && Double.isFinite(power)) {
+            totalEnergy = totalEnergy + (power * (duration/ 1000d));
+        }
 	}
     /**
      * This increments the energy consumption of this method node
      * @param energy
      */
     public void incrementTotalEnergy(double energy) {
-        totalEnergy = totalEnergy + energy; 
+        if (energy > 0 && Double.isFinite(energy)) {
+            totalEnergy = totalEnergy + energy; 
+        }
     }   
     
     /**

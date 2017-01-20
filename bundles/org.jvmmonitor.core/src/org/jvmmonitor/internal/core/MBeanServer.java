@@ -1504,6 +1504,12 @@ public class MBeanServer implements IMBeanServer {
             ThreadNode<CallTreeNode> callTreeThreadNode,
             CallTreeNode currentFrameNode, String methodName,
             boolean isNewStack, long period, double power, boolean isLeaf) {
+        if (power < 0) {
+            power = 0;
+        }
+        if (period < 0) {
+            period = 0;
+        }
         CallTreeNode frameNode;
         if (currentFrameNode == null) {
             frameNode = (CallTreeNode) callTreeThreadNode.getChild(methodName);
@@ -1557,7 +1563,7 @@ public class MBeanServer implements IMBeanServer {
                 .getChild(methodName);
         if (methodNode == null) {
             methodNode = new MethodNode(jvm.getCpuProfiler().getCpuModel(),
-                    methodName, hotSpotThreadNode, 0); //was power * (period / 1000d)
+                    methodName, hotSpotThreadNode, power * (period / 1000d));
             hotSpotThreadNode.addChild(methodNode);
         }
 

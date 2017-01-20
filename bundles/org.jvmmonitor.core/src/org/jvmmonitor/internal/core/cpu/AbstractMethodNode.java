@@ -163,7 +163,7 @@ abstract public class AbstractMethodNode implements IMethodNode {
         if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0) {
             return 0;
         }  
-        return totalEnergy / TimeUnit.MILLISECONDS.toSeconds(selfTime);
+        return (totalEnergy / TimeUnit.MILLISECONDS.toSeconds(selfTime) * (getSelfTimeInPercentage() / 100.0));
     }
 
     @Override
@@ -176,7 +176,7 @@ abstract public class AbstractMethodNode implements IMethodNode {
         if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0) {
             return 0;
         }        
-        return (totalEnergy / getRootTotalTime()) * TimeUnit.MILLISECONDS.toSeconds(selfTime);
+        return (totalEnergy * (getSelfTimeInPercentage() / 100.0)) ;
     }    
     
 }
