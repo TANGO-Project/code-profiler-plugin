@@ -46,10 +46,12 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
      *            the parent frame node
      * @param thread
      *            the thread node
+     * @param energy
+     *          the energy consumed
      */
     public CallTreeNode(ICpuModel cpuModel, String name, long time, int count, CallTreeNode parent,
-            ThreadNode<CallTreeNode> thread) {
-        this(cpuModel, name, time, count, thread);
+            ThreadNode<CallTreeNode> thread, double energy) {
+        this(cpuModel, name, time, count, thread, energy);
         parentFrameNode = parent;
     }
 
@@ -67,11 +69,12 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
      * @param thread
      *            the thread node
      */
-    public CallTreeNode(ICpuModel cpuModel, String name, long time, int count, ThreadNode<CallTreeNode> thread) {
-        super(cpuModel, name, thread);
+    public CallTreeNode(ICpuModel cpuModel, String name, long time, int count, ThreadNode<CallTreeNode> thread, double energy) {
+        super(cpuModel, name, thread, energy);
 
         totalTime = time;
         invocationCount = count;
+        totalEnergy = energy;
 
         frames = new ArrayList<CallTreeNode>();
     }
@@ -151,7 +154,7 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
      */
     @Override
     public double getAveragePower() {
-        if (selfTime == 0 || totalEnergy == 0) {
+        if (selfTime == 0 || totalEnergy == 0 || totalEnergy == Double.NaN) {
             return 0;
         }   
         return totalEnergy / ((double)TimeUnit.MILLISECONDS.toSeconds(selfTime));
@@ -170,7 +173,7 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
      */
     @Override
     public double getSelfTotalEnergy() {
-        if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0) {
+        if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0 || totalEnergy == Double.NaN) {
             return 0;
         }           
         return (totalEnergy / TimeUnit.MILLISECONDS.toSeconds(totalTime)) * TimeUnit.MILLISECONDS.toSeconds(selfTime);
@@ -250,6 +253,12 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
      *            the total energy consumed
      */
     public void setTotalEnergy(double energy) {
+        if (energy == Double.NaN) {
+            return;
+        }        
+        if (energy < 0) {
+            return;
+        }
         totalEnergy = energy;
     }    
 
@@ -290,6 +299,8 @@ public class CallTreeNode extends AbstractMethodNode implements ICallTreeNode {
                 ">", "&gt;"); //$NON-NLS-1$ //$NON-NLS-2$
         buffer.append("<frame name=\"").append(method).append("\" cnt=\"") //$NON-NLS-1$ //$NON-NLS-2$
                 .append(invocationCount).append("\" time=\"").append(totalTime) //$NON-NLS-1$
+                .append("\" energy=\"") //$NON-NLS-1$ //$NON-NLS-2$
+                .append(totalEnergy)
                 .append("\""); //$NON-NLS-1$
         if (frames.size() > 0) {
             buffer.append(">\n"); //$NON-NLS-1$

@@ -81,7 +81,7 @@ import org.jvmmonitor.internal.core.cpu.CpuModel;
 import org.jvmmonitor.internal.core.cpu.MethodNode;
 import org.jvmmonitor.internal.core.cpu.ThreadNode;
 
-import eu.ascetic.asceticarchitecture.iaas.energymodeller.types.energyuser.usage.HostEnergyCalibrationData;
+import eu.tango.energymodeller.types.energyuser.usage.HostEnergyCalibrationData;
 
 /**
  * The MBean server. MBeanServerConnection is hidden for clients, since its
@@ -1463,16 +1463,18 @@ public class MBeanServer implements IMBeanServer {
             }
 
             updateMethodNode(hotSpotThreadNode, methodName, isNewStack, period, power);
+
             currentFrameNode = updateFrameNode(callTreeThreadNode,
                     currentFrameNode, methodName, isNewStack, period, power,
                     i == stackTrace.length - 1);
+
             hotSpotThreadNode
                     .setTotalTime(hotSpotThreadNode.getTotalTime() + period);
-            hotSpotThreadNode.incrementTotalEnergy(power * (period/1000));
+            hotSpotThreadNode.incrementTotalEnergy(power * (period / 1000d));
             if (isRootStack) {
                 callTreeThreadNode.setTotalTime(
                         callTreeThreadNode.getTotalTime() + period);
-                callTreeThreadNode.incrementTotalEnergy(power * (period/1000));
+                callTreeThreadNode.incrementTotalEnergy(power * (period/1000d));
             }
 
             isRootStack = false;
@@ -1512,12 +1514,12 @@ public class MBeanServer implements IMBeanServer {
         if (frameNode == null) {
             if (currentFrameNode == null) {
                 frameNode = new CallTreeNode(jvm.getCpuProfiler().getCpuModel(),
-                        methodName, period, 1, callTreeThreadNode, power * (period/1000));
+                        methodName, period, 1, callTreeThreadNode, power * (period/1000d));
                 callTreeThreadNode.addChild(frameNode);
             } else {
                 frameNode = new CallTreeNode(jvm.getCpuProfiler().getCpuModel(),
                         methodName, period, 1, currentFrameNode,
-                        callTreeThreadNode, power * (period/1000));
+                        callTreeThreadNode, power * (period / 1000d));
                 currentFrameNode.addChild(frameNode);
             }
         } else {
@@ -1526,12 +1528,11 @@ public class MBeanServer implements IMBeanServer {
                         .setInvocationCount(frameNode.getInvocationCount() + 1);
             }
             frameNode.setTotalTime(frameNode.getTotalTime() + period);
-            frameNode.setTotalEnergy(frameNode.getTotalEnergy() + (power * (period/1000)));
+            frameNode.setTotalEnergy(frameNode.getTotalEnergy() + (power * (period / 1000d)));
         }
 
         if (isLeaf) {
             frameNode.setSelfTime(frameNode.getSelfTime() + period);
-            frameNode.setTotalEnergy(frameNode.getSelfTotalEnergy() + power * (period/1000));
         }
 
         return frameNode;
@@ -1555,7 +1556,7 @@ public class MBeanServer implements IMBeanServer {
                 .getChild(methodName);
         if (methodNode == null) {
             methodNode = new MethodNode(jvm.getCpuProfiler().getCpuModel(),
-                    methodName, hotSpotThreadNode, 0);
+                    methodName, hotSpotThreadNode, power * (period / 1000d));
             hotSpotThreadNode.addChild(methodNode);
         }
 

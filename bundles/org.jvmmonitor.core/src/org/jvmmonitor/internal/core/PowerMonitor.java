@@ -156,8 +156,8 @@ public class PowerMonitor implements IPowerMonitor {
     @Override
     public double calculatePowerConsumption(double cpuUsage) {
         //Apply checks to the range for CPU Usage.
-        if (cpuUsage > 1.0) {
-            cpuUsage = 1.0;
+        if (cpuUsage > 100) {
+            cpuUsage = 100;
         } else if (cpuUsage < 0) {
             cpuUsage = 0.0;
         }
@@ -171,7 +171,7 @@ public class PowerMonitor implements IPowerMonitor {
             }
         }
 
-        double power = predictor.predictPowerUsed(host, cpuUsage) - host.getIdlePowerConsumption();
+        double power = predictor.predictPowerUsed(host, cpuUsage / 100d) - host.getIdlePowerConsumption();
         //if (power > 0)
         //System.out.println("PowMon: Usage: " + cpuUsage + " Power: " + power);
         /**

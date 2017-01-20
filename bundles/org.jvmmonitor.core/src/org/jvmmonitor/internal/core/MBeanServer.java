@@ -1514,12 +1514,12 @@ public class MBeanServer implements IMBeanServer {
         if (frameNode == null) {
             if (currentFrameNode == null) {
                 frameNode = new CallTreeNode(jvm.getCpuProfiler().getCpuModel(),
-                        methodName, period, 1, callTreeThreadNode);
+                        methodName, period, 1, callTreeThreadNode, power * (period/1000d));
                 callTreeThreadNode.addChild(frameNode);
             } else {
                 frameNode = new CallTreeNode(jvm.getCpuProfiler().getCpuModel(),
                         methodName, period, 1, currentFrameNode,
-                        callTreeThreadNode);
+                        callTreeThreadNode, power * (period / 1000d));
                 currentFrameNode.addChild(frameNode);
             }
         } else {
@@ -1533,6 +1533,7 @@ public class MBeanServer implements IMBeanServer {
 
         if (isLeaf) {
             frameNode.setSelfTime(frameNode.getSelfTime() + period);
+            frameNode.setTotalEnergy(frameNode.getSelfTotalEnergy() + power * (period / 1000d));
         }
 
         return frameNode;
@@ -1556,7 +1557,7 @@ public class MBeanServer implements IMBeanServer {
                 .getChild(methodName);
         if (methodNode == null) {
             methodNode = new MethodNode(jvm.getCpuProfiler().getCpuModel(),
-                    methodName, hotSpotThreadNode);
+                    methodName, hotSpotThreadNode, 0); //was power * (period / 1000d)
             hotSpotThreadNode.addChild(methodNode);
         }
 
