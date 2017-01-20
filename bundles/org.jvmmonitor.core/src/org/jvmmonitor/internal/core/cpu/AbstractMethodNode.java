@@ -6,6 +6,8 @@
  *******************************************************************************/
 package org.jvmmonitor.internal.core.cpu;
 
+import java.util.concurrent.TimeUnit;
+
 import org.jvmmonitor.core.cpu.ICpuModel;
 import org.jvmmonitor.core.cpu.IMethodNode;
 
@@ -161,7 +163,7 @@ abstract public class AbstractMethodNode implements IMethodNode {
         if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0) {
             return 0;
         }  
-        return totalEnergy / ((double) selfTime);
+        return totalEnergy / TimeUnit.MILLISECONDS.toSeconds(selfTime);
     }
 
     @Override
@@ -174,7 +176,7 @@ abstract public class AbstractMethodNode implements IMethodNode {
         if (selfTime == 0 || totalEnergy == 0 || getRootTotalTime() == 0) {
             return 0;
         }        
-        return (totalEnergy / getRootTotalTime()) * selfTime;
+        return (totalEnergy / getRootTotalTime()) * TimeUnit.MILLISECONDS.toSeconds(selfTime);
     }    
     
 }
