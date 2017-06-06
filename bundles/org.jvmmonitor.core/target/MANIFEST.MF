@@ -9,7 +9,7 @@ Bundle-Vendor: %providerName
 Export-Package: org.jvmmonitor.core,org.jvmmonitor.core.cpu,org.jvmmon
  itor.core.dump,org.jvmmonitor.core.mbean,org.jvmmonitor.internal.core
  ;x-friends:="org.jvmmonitor.core.tests"
-Bundle-Version: 3.8.1.201701201634
+Bundle-Version: 3.8.1.201704191212
 Bundle-Name: %pluginName
 Bundle-Localization: plugin
 Bundle-ClassPath: jvmmonitor-core.jar,lib/activation-1.1-rev-1.jar,lib
