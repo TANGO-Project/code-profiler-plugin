@@ -7,15 +7,8 @@
 # This code is licensed under an Apache 2.0 license. Please, refer to the LICENSE.TXT file for more information
 
 language: java
+
 jdk:
   - oraclejdk8
   
-# SonnarQube Configuration
-addons:
-  sonarcloud:
-    organization: "richardkav-github"
-    token:
-      secure: 4bfd776407ac9a01b64454c66f5dcb811a7acc49
-script: 
-  - mvn install -DskipTest -q
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+script: mvn install -DskipTest -q
