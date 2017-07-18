@@ -17,5 +17,5 @@ addons:
     token:
       secure: 4bfd776407ac9a01b64454c66f5dcb811a7acc49
 script: 
-  - mvn install -DskipTest -q
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn install -DskipTest -B -q
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -B -q sonar:sonar
