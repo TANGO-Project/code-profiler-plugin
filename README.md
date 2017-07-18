@@ -34,11 +34,11 @@ The Energy Modeller's primary two prerequisites are:
 #### Sonar Cloud reports:
 The Sonar Cloud reports for this project are available at: https://sonarcloud.io/dashboard?id=eu.tango%3Acode-optimizer-plugin
 
-### Installation for running the service
+### Installation Guide for running the Application
 
 In this case, we are going to detail how to run the application as a plugin of the Eclipse IDE.
 
-#### Configuring the service
+#### Configuring the Application
 
 TODO
 
