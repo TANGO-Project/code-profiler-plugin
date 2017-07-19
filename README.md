@@ -18,7 +18,7 @@ This guide it is divided into two different guides, one specific to compilation 
 
 #### Requirements
 
-The Energy Modeller's primary two prerequisites are:
+The code profiler's primary prerequisites are:
 
 * Java
 * Eclipse
