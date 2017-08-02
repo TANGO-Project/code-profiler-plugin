@@ -42,7 +42,7 @@ In this case, we are going to detail how to run the application as a plugin of t
 
 This application works as a standard plugin to eclipse. It creates a new perspective for monitoring that may be used to monitor power consumption of applications running in an eclipse based environment.
 
-It extends [JVM Monitor](http://jvmmonitor.org/) so the user guide remains applicable. 
+It extends [JVM Monitor](http://jvmmonitor.org/) so the JVM Monitor user guide remains applicable. 
 
 ## Relation to other TANGO components
 
