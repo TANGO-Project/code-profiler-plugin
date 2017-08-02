@@ -4,7 +4,7 @@
 
 Code Profiler Plugin (CP) is a component of the European Project TANGO (http://tango-project.eu ).
 
-CP is distributed under a [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+CP is distributed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ## Description
 
@@ -38,13 +38,11 @@ The Sonar Cloud reports for this project are available at: https://sonarcloud.io
 
 In this case, we are going to detail how to run the application as a plugin of the Eclipse IDE.
 
-#### Configuring the Application
-
-TODO
-
 ## Usage Guide
 
-TODO
+This application works as a standard plugin to eclipse. It creates a new perspective for monitoring that may be used to monitor power consumption of applications running in an eclipse based environment.
+
+It extends [JVM Monitor](http://jvmmonitor.org/) so the user guide remains applicable. 
 
 ## Relation to other TANGO components
 
