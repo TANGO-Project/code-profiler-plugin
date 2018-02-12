@@ -1,20 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.tango</groupId>
-  <artifactId>code-optimizer-plugin</artifactId>
+  <artifactId>code-profiler-plugin</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <parent>
-    <groupId>eu.tango.code-optimizer-plugin.releng.configuration</groupId>
-    <artifactId>code-optimizer-plugin.releng.configuration</artifactId>
+    <groupId>eu.tango.code-profiler-plugin.releng.configuration</groupId>
+    <artifactId>code-profiler-plugin.releng.configuration</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <relativePath>./releng/code-optimizer-plugin.releng.configuration</relativePath>
+    <relativePath>./releng/code-profiler-plugin.releng.configuration</relativePath>
   </parent>
   <modules>
     <module>releng</module>
     <module>features</module>
     <module>bundles</module>
   </modules>
-  <description>The Code Optimizer Plug-in parent module.</description>
-  <name>Code Optimizer Plug-in</name>
+  <description>The Code Profiler Plug-in parent module.</description>
+  <name>Code Profiler Plug-in</name>
 </project>

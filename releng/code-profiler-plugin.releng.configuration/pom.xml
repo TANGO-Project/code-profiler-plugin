@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <!-- <parent> <artifactId>...</artifactId> <groupId>...</groupId> <version>0.0.1-SNAPSHOT</version> <relativePath>..</relativePath> </parent> -->
-  <groupId>eu.tango.code-optimizer-plugin.releng.configuration</groupId>
-  <artifactId>code-optimizer-plugin.releng.configuration</artifactId>
+  <groupId>eu.tango.code-profiler-plugin.releng.configuration</groupId>
+  <artifactId>code-profiler-plugin.releng.configuration</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
     <tycho.version>0.26.0</tycho.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <mars-repo.url>http://download.eclipse.org/releases/mars</mars-repo.url>
+    <oxygen-repo.url>http://download.eclipse.org/releases/oxygen</oxygen-repo.url>
   </properties>
   <repositories>
     <repository>
-      <id>mars</id>
-      <url>${mars-repo.url}</url>
+      <id>oxygen</id>
+      <url>${oxygen-repo.url}</url>
       <layout>p2</layout>
     </repository>
     <repository>
@@ -84,6 +84,6 @@
       </plugin>
     </plugins>
   </build>
-  <name>Code Optimizer Plug-in Configuration</name>
-  <description>The Code Optimizer Plug-in release engineering eclipse repository module.</description>
+  <name>Code Profiler Plug-in Configuration</name>
+  <description>The Code Profiler Plug-in release engineering eclipse repository module.</description>
 </project>

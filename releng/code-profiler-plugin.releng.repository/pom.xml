@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>eu.tango.code-profiler-plugin.releng</groupId>
+    <artifactId>code-profiler-plugin.releng</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>code-profiler-plugin.releng.repository</artifactId>
+  <name>Code Profiler Plug-in Eclipse Repository</name>
+  <groupId>eu.tango.code-profiler-plugin.releng.repository</groupId>
+  <version>1.0.0-SNAPSHOT</version>
+  <description>The Code Profiler Plug-in release engineering eclipse repository module.</description>
+  <packaging>eclipse-repository</packaging>
+</project>

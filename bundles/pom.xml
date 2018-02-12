@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>eu.tango.code-optimizer-plugin.bundles</groupId>
-  <artifactId>code-optimizer-plugin.bundles</artifactId>
+  <groupId>eu.tango.code-profiler-plugin.bundles</groupId>
+  <artifactId>code-profiler-plugin.bundles</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <parent>
     <groupId>eu.tango</groupId>
-    <artifactId>code-optimizer-plugin</artifactId>
+    <artifactId>code-profiler-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modules>
@@ -16,6 +16,6 @@
     <module>org.jvmmonitor.ui</module>
     <module>org.jvmmonitor.doc</module>
   </modules>
-  <name>Code Optimizer Plug-in Bundles</name>
-  <description>The Code Optimizer Plug-in bundles module.</description>
+  <name>Code Profiler Plug-in Bundles</name>
+  <description>The Code Profiler Plug-in bundles module.</description>
 </project>

@@ -19,7 +19,7 @@ public class Power implements PowerMXBean {
     public final static String POWER_MXBEAN_NAME = "org.jvmmonitor:type=Power";
     private OperatingSystemMXBean operatingSystemMXBean;
     private EnergyPredictorInterface predictor = null;
-    private static final String DEFAULT_PREDICTOR_PACKAGE = "eu.ascetic.asceticarchitecture.iaas.energymodeller.energypredictor";
+    private static final String DEFAULT_PREDICTOR_PACKAGE = "eu.tango.energymodeller.energypredictor";
 
     private long nanoBefore = 0;
     private long cpuBefore = 0;
@@ -37,14 +37,14 @@ public class Power implements PowerMXBean {
         host.setDiskGb(20);
         host.setRamMb(2048);
         PropertiesConfiguration config = new PropertiesConfiguration();
-        config.setProperty("iaas.energy.modeller.cpu.energy.predictor.default_load", 0);
-        config.setProperty("iaas.energy.modeller.cpu.energy.predictor.vm_share_rule", "DefaultEnergyShareRule");
-        config.setProperty("iaas.energy.modeller.cpu.energy.predictor.consider_idle_energy", true);
-        config.setProperty("iaas.energy.modeller.energy.predictor.overheadPerHostInWatts", 0);
-        config.setProperty("iaas.energy.modeller.cpu.energy.predictor.datasource", "ZabbixDirectDbDataSourceAdaptor");
-        config.setProperty("iaas.energy.modeller.cpu.energy.predictor.utilisation.observe_time.min", 0);
-        config.setProperty("iaas.energy.modeller.cpu.energy.predictor.utilisation.observe_time.sec", 30);
-        predictor = new CpuOnlyBestFitEnergyPredictor(config);
+        config.setProperty("energy.modeller.cpu.energy.predictor.default_load", 0);
+        config.setProperty("energy.modeller.cpu.energy.predictor.vm_share_rule", "DefaultEnergyShareRule");
+        config.setProperty("energy.modeller.cpu.energy.predictor.consider_idle_energy", true);
+        config.setProperty("energy.modeller.energy.predictor.overheadPerHostInWatts", 0);
+        config.setProperty("energy.modeller.cpu.energy.predictor.datasource", "ZabbixDirectDbDataSourceAdaptor");
+        config.setProperty("energy.modeller.cpu.energy.predictor.utilisation.observe_time.min", 0);
+        config.setProperty("energy.modeller.cpu.energy.predictor.utilisation.observe_time.sec", 30);
+        predictor = new CpuOnlyBestFitEnergyPredictor(config);     
     }
 
     /**
