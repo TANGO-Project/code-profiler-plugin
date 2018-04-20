@@ -91,7 +91,7 @@ import eu.tango.energymodeller.types.energyuser.usage.HostEnergyCalibrationData;
 public class MBeanServer implements IMBeanServer {
 
     /** The data transfer MXBean name. */
-    private final static String DATA_TRANSFER_MXBEAN_NAME = "org.jvmmonitor:type=Data Transfer"; //$NON-NLS-1$
+    private static final String DATA_TRANSFER_MXBEAN_NAME = "org.jvmmonitor:type=Data Transfer"; //$NON-NLS-1$
 
     /** The MBean server connection. */
     private MBeanServerConnection connection;
@@ -697,7 +697,7 @@ public class MBeanServer implements IMBeanServer {
                 } catch (JvmCoreException e) {
                     Activator.log(IStatus.ERROR, e.getMessage(), e);
                     suspendSampling();
-                } catch (Throwable t) {
+                } catch (Exception ex) {
                     suspendSampling();
                 }
             }
@@ -770,7 +770,7 @@ public class MBeanServer implements IMBeanServer {
             return ""; //$NON-NLS-1$
         }
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         for (String argument : arguments) {
             if (buffer.length() > 0) {
                 buffer.append(" "); //$NON-NLS-1$
@@ -911,15 +911,13 @@ public class MBeanServer implements IMBeanServer {
                 Object attributeObject = getAttribute(attribute.getObjectName(),
                         attributeName);
                 //This checks to see if the power monitoring data is loaded in correctly
-                if (!powerCalibrated && "Power".equals(attributeName)) {
-                    if ("".equals(jvm.getPowerMonitor().getHostCalibrationInputString())) {
-                        powerCalibrated = true;
-                        jvm.getPowerMonitor().loadCalibrationData();
-                    }
+                if (!powerCalibrated && "Power".equals(attributeName) && 
+                "".equals(jvm.getPowerMonitor().getHostCalibrationInputString())) {
+                	powerCalibrated = true;
+                    jvm.getPowerMonitor().loadCalibrationData();
                 }
  
-                Number value = getAttributeValue(attributeObject,
-                        attributeName);
+                Number value = getAttributeValue(attributeObject, attributeName);
                 if (value == null) {
                     continue;
                 }
@@ -977,7 +975,7 @@ public class MBeanServer implements IMBeanServer {
             if (attributeName.contains(".")) { //$NON-NLS-1$
                 Object value = compositeData.get(attributeName.split("\\.")[1]); //$NON-NLS-1$
                 return getAttributeValue(value, attributeName
-                        .substring(attributeName.indexOf(".") + 1)); //$NON-NLS-1$
+                        .substring(attributeName.indexOf('.') + 1)); //$NON-NLS-1$
             }
         } else if (attributeObject instanceof TabularData) {
             TabularData tabularData = (TabularData) attributeObject;
@@ -988,7 +986,7 @@ public class MBeanServer implements IMBeanServer {
                 if (String.valueOf(keys[0]).equals(key)) {
                     return getAttributeValue(tabularData.get(keys),
                             attributeName
-                                    .substring(attributeName.indexOf(".") + 1)); //$NON-NLS-1$
+                                    .substring(attributeName.indexOf('.') + 1)); //$NON-NLS-1$
                 }
             }
         }
@@ -1081,46 +1079,47 @@ public class MBeanServer implements IMBeanServer {
 
         String[] lines = heap.split("\n"); //$NON-NLS-1$
         for (String line : lines) {
-            Scanner scanner = new Scanner(line);
-            if (!scanner.hasNext()) {
-                scanner.close();
-                continue;
-            }
-            scanner.next();
-            if (!scanner.hasNextLong()) {
-                scanner.close();
-                continue;
-            }
-            long count = scanner.nextLong();
-            if (!scanner.hasNextLong()) {
-                scanner.close();
-                continue;
-            }
-            long size = scanner.nextLong();
-            if (scanner.hasNext()) {
-                String className = scanner.next();
-                scanner.close();
-                if (className.startsWith("<")) { //$NON-NLS-1$
-                    continue;
-                }
-                className = convertClassName(className);
-
-                HeapElement oldElement = heapListElements.get(className);
-                if (oldElement == null) {
-                    newHeapElements.put(className,
-                            new HeapElement(className, size, count));
-                } else {
-                    // WORKAROUND heap from target JVM has a
-                    // duplicated entry...
-                    if (!newHeapElements.containsKey(className)) {
-                        oldElement.setSizeAndCount(size, count);
-                        newHeapElements.put(className, oldElement);
-                    }
-                }
-                if (newHeapElements.size() >= maxNumberOfClasses) {
-                    break;
-                }
-            }
+        	try (Scanner scanner = new Scanner(line)) {
+	            if (!scanner.hasNext()) {
+	                scanner.close();
+	                continue;
+	            }
+	            scanner.next();
+	            if (!scanner.hasNextLong()) {
+	                scanner.close();
+	                continue;
+	            }
+	            long count = scanner.nextLong();
+	            if (!scanner.hasNextLong()) {
+	                scanner.close();
+	                continue;
+	            }
+	            long size = scanner.nextLong();
+	            if (scanner.hasNext()) {
+	                String className = scanner.next();
+	                scanner.close();
+	                if (className.startsWith("<")) { //$NON-NLS-1$
+	                    continue;
+	                }
+	                className = convertClassName(className);
+	
+	                HeapElement oldElement = heapListElements.get(className);
+	                if (oldElement == null) {
+	                    newHeapElements.put(className,
+	                            new HeapElement(className, size, count));
+	                } else {
+	                    // WORKAROUND heap from target JVM has a
+	                    // duplicated entry...
+	                    if (!newHeapElements.containsKey(className)) {
+	                        oldElement.setSizeAndCount(size, count);
+	                        newHeapElements.put(className, oldElement);
+	                    }
+	                }
+	                if (newHeapElements.size() >= maxNumberOfClasses) {
+	                    break;
+	                }
+	            }
+        	}
         }
         heapListElements = newHeapElements;
     }
@@ -1634,7 +1633,7 @@ public class MBeanServer implements IMBeanServer {
                 } catch (JvmCoreException e) {
                     Activator.log(IStatus.ERROR, e.getMessage(), e);
                     timer.cancel();
-                } catch (Throwable t) {
+                } catch (Exception ex) {
                     timer.cancel();
                 }
             }

@@ -32,7 +32,7 @@ The code profiler's primary prerequisites are:
 [![Build Status](https://travis-ci.org/TANGO-Project/code-profiler-plugin.svg?branch=master)](https://travis-ci.org/TANGO-Project/code-profiler-plugin)
 
 #### Sonar Cloud reports:
-The Sonar Cloud reports for this project are available at: https://sonarcloud.io/dashboard?id=eu.tango%3Acode-optimizer-plugin
+The Sonar Cloud reports for this project are available at: https://sonarcloud.io/dashboard?id=eu.tango%3Acode-profiler-plugin
 
 ### Installation Guide for running the Application
 
