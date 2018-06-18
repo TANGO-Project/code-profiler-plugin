@@ -59,7 +59,7 @@ public class Power implements PowerMXBean {
     @Override
     public void setHostCalibrationData(List<HostEnergyCalibrationData> calibrationData) {
         if (calibrationData instanceof ArrayList) {
-            host.setCalibrationData(((ArrayList) calibrationData));
+            host.setCalibrationData(((ArrayList<HostEnergyCalibrationData>) calibrationData));
         } else {
             ArrayList<HostEnergyCalibrationData> data = new ArrayList<>();
             data.addAll(calibrationData);
@@ -75,7 +75,7 @@ public class Power implements PowerMXBean {
     @Override
     public void setHostCalibrationInputString(String calibrationData) {
         try {
-            System.out.println(calibrationData);
+        	Logger.getLogger(Power.class.getName()).log(Level.INFO, "Current calibration data is: " + calibrationData);
             ArrayList<HostEnergyCalibrationData> data = new ArrayList<>();
             String[] splitString = calibrationData.split(",");
             for (int i = 0; i < splitString.length; i = i + 2) {
@@ -132,7 +132,7 @@ public class Power implements PowerMXBean {
             
             double power = 0.0;
             if (!host.isCalibrated()) {
-                host.setCalibrationData(((ArrayList) getHostCalibrationData()));
+                host.setCalibrationData(((ArrayList<HostEnergyCalibrationData>) getHostCalibrationData()));
             }
             power = predictor.predictPowerUsed(host, cpuPercentage);
             //System.out.println("power.java Usage: " + cpuPercentage + " Power: " + power);
@@ -180,6 +180,10 @@ public class Power implements PowerMXBean {
         return answer;
     }
 
+    /**
+     * This gets the cpu utilisation information to be used in the power model that estimates current power consumption.
+     * @return
+     */
     private long getProcessCpuTime() {
         try {
             if (Class.forName("com.sun.management.OperatingSystemMXBean").isInstance(operatingSystemMXBean)) {
