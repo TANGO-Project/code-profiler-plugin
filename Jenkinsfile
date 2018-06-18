@@ -1,5 +1,5 @@
 pipeline {
-	agent { docker { image 'maven:3.5.3-jdk-7-alpine' } }
+	agent { docker { image 'maven:3.5.3-jdk-8-slim' } }
     stages {
         stage ('Initialize') {
             steps {
