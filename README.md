@@ -4,7 +4,7 @@
 
 Code Profiler Plugin (CP) is a component of the European Project TANGO (http://tango-project.eu ).
 
-CP is distributed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+CP is distributed under the [Eclipse Public Licence, version 2.0](https://www.eclipse.org/legal/epl-2.0/).
 
 ## Description
 
